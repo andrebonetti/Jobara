@@ -1,0 +1,46 @@
+.boxes:extend(.full-container) {
+    
+    border-width: 1px 0 0 0;
+    border-style:solid;
+                
+    .box-master{
+                                     
+       .box{
+            width: 100%;
+            padding-right: 3%;
+                        
+            .img-content{   
+                a{
+                    img{
+                        max-width: 100%;
+                    }
+                }
+            }
+                                
+            h2{
+                margin:3% 0 0 0;
+                border:none;
+
+            }
+
+            h3{
+                margin:1% 0 0 0;
+                font-size: 1.15em;
+            }
+
+            h4{
+                margin:2% 0 1% 0;
+                font-size: 1.1em;
+                color:@blue-1;
+                text-decoration: underline;
+            }
+
+            a:hover{
+                text-decoration:none;
+
+                h2{text-decoration:underline;}
+                img{opacity:0.8;}
+            }
+        }
+    }
+}
