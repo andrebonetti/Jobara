@@ -1,65 +1,89 @@
 <script src="<?= base_url("js/my_jassor_list.js")?>"></script>         
+      
+    <div id="slider1_container" style="height: 550px;">
 
-        <div class="busca-rapida">
-            <div class="myContainer">
-                
-                <h1>Venda e Aluguel de Imóveis</h1>
-                
-                <?= form_open("imoveis/imoveis_temp",array("name"=>"busca-rapida"))?>
-                
-                    <input type="text" class="form-control" name="buscar" placeholder="Buscar"> 
-                    
-                    <input type="submit" class="search" value="">
-                
-                <?= form_close()?>
+            <!-- Loading Screen -->
+            <div u="loading" class="loading">
+                <div class="loading1"></div>
+                <div class="loading2"></div>
             </div>
-        </div>
-        
-        <div class="my-content home-2">
-            <div class="myContainer">
-                
-                <div class="slide-container" id="slider1_container">
 
-                    <!-- Slides Container -->
-                    <div class="slides-content" u="slides">
-                        <?php foreach($last_imoveis as $imovel){?> 
-                            <div>
-                                <img src="<?= base_url("img/".$imovel['foto_principal']."")?>"/>
-                                
-                                <div class="imov_datelhes">
-                                    <h2><?=ucwords($imovel['bairro'])?></h2>
-                                    <h3><?=ucwords($imovel['tipo_imovel'])?> para <?=tipo_negocio_infinitivo($imovel['tipo_negocio'])?></h3>
-                                    <?= anchor("imovel-para-".tipo_negocio_infinitivo($imovel['tipo_negocio'])."/".url_title($imovel['bairro'])."/id/".$imovel['id']."","Veja mais",array("class"=>"btn btn-primary"))?>
+            <!-- Slides Container -->
+            <div u="slides" class="uSlides">
+                <div>
+                    <div id="sliderh1_container" class="sliderh1 sliderH">
 
-                                </div>
-                                
-                                <div u="thumb">
-                                    <img class="i" src="<?= base_url("img/".$imovel['foto_principal']."")?>"/>
-                                    <div class="t"><?=ucwords($imovel['bairro'])?></div>
-                                    <div class="c"><?=ucwords($imovel['tipo_imovel'])?> para <?=$imovel['tipo_negocio']?></div>
-                                </div>
-                            </div>
-                        <?php } ?>
+                        <!-- Slides Container -->
+                        <div u="slides" class="uSlidesContent">
+                            
+                            <?php foreach($last_imoveis_aluguel as $imovel){?> 
+                            
+                                <!--<div><img u="image" src=" /*base_url("img/".$imovel['foto_principal']."")*/ "/></div>-->
+                                <div><img u="image" src="http://jobara.com.br/img/<?=$imovel['foto_principal'].""?>"/></div>
+                            
+                            <?php } ?>
+                        
+                        </div>
+
+                        <div u="navigator" class="jssorb03">
+                            <div u="prototype" style="position: absolute; width: 21px; height: 21px; text-align:center; line-height:21px; color:white; font-size:12px;"><NumberTemplate></NumberTemplate></div>
+                        </div>
+
                     </div>
-
-                    <div u="thumbnavigator" class="jssort11" style="position:relative;float:right;width:265px; height: 370px;">
-                        <div class="nav-slides" u="slides">
-                            <div u="prototype" class="p" style="width:260px; height:65px;">
-                                <thumbnailtemplate></thumbnailtemplate>
-                             </div>
+                    <div u="thumb">
+                        <div class="title_back my_thumb"></div>
+                        <div class="title my_thumb">
+                            Aluguel
                         </div>
                     </div>
-
-                    <!-- Trigger -->
-                    <script>
-                        jssor_slider1_starter('slider1_container');
-                    </script>
                 </div>
-                
+                <div>
+                    <div id="sliderh2_container" class="sliderh2 sliderH">
+
+                        <!-- Slides Container -->
+                        <div u="slides" class="uSlidesContent">
+                            
+                            <?php foreach($last_imoveis_venda as $imovel){?> 
+                            
+                                <!--<div><img u="image" src=" /*base_url("img/".$imovel['foto_principal']."")*/ "/></div>-->
+                                <div><img u="image" src="http://jobara.com.br/img/<?=$imovel['foto_principal'].""?>"/></div>
+                            
+                            <?php } ?>
+                            
+                        </div>
+
+                        <div u="navigator" class="jssorb03">
+                            <div u="prototype" style="position: absolute; width: 21px; height: 21px; text-align:center; line-height:21px; color:white; font-size:12px;"><NumberTemplate></NumberTemplate></div>
+                        </div>
+
+                    </div>
+                    <div u="thumb">
+                        <div class="title_back my_thumb"></div>
+                        <div class="title my_thumb">
+                            Venda
+                        </div>
+                    </div>
+                </div>
+
             </div>
+            <!-- ThumbnailNavigator Skin Begin -->
+            <div u="thumbnavigator" class="jssort12" style="cursor: default; position:absolute; height: 50px; left:0px; bottom:0px; ">
+
+                <div u="slides" id="cursorSlides" style="cursor: move;">
+                    <div u="prototype" class=p style="POSITION: absolute; width: 700px; HEIGHT: 50px; TOP: 0; LEFT: 0;">
+                        <thumbnailtemplate style="WIDTH: 100px; HEIGHT: 50px; border: none; position: absolute; TOP: 0; LEFT: 0; "></thumbnailtemplate>
+                    </div>
+                </div>
+
+            </div>
+
+            <a style="display: none" href="http://www.jssor.com">image carousel</a>
+
+            
+
         </div>
 
-        <div class="my-content home-3">
+    <div class="my-content home-3">
             <div class="myContainer">
                              
                 <div class="imov-destac">
@@ -141,14 +165,9 @@
         </div> 
     </div>            
             
-        <script>           
-            var teste = function(){ 
-                var value = $(this).val();
-                $(".img_relat").attr("src","<?= base_url('img/tipo/"+value+".jpg')?>"); 
-            }  
-            $(".bsc-home_imovel").closest("select").on("change",teste);
-        </script>  
-        
-       
-         
-        <script src="<?= base_url("js/my_scripts-home.js")?>"></script>
+    
+    <script type="text/javascript" src="<?= base_url("js/jssor.js")?>"></script>
+    <script type="text/javascript" src="<?= base_url("js/my_jassor.js")?>"></script>
+    <script type="text/javascript" src="<?= base_url("js/jssor.slider.js")?>"></script>
+    <script type="text/javascript" src="<?= base_url("js/jssor.slide_nestedSource.js")?>"></script>
+    <script type="text/javascript" src="<?= base_url("js/my_jassor2.js")?>"></script>

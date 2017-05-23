@@ -18,7 +18,7 @@
         <link rel="stylesheet" type="text/css" href="<?= base_url("css/bootstrap.css")?>">
         
         <?php if($atualPage == "home"){?>
-        <link rel="stylesheet" type="text/css" href="<?= base_url("css/jsson_list.css")?>"> 
+        <link rel="stylesheet" type="text/css" href="<?= base_url("css/jsson_home.css")?>"> 
         <?php } ?>
         <?php if($atualPage == "imoveis"){?>
         <link rel="stylesheet" type="text/css" href="<?= base_url("css/my_jassor.css")?>"> 
@@ -28,9 +28,6 @@
         
         <script src="<?= base_url("js/jquery-2.1.3.min.js")?>"></script>
        	<script src="<?= base_url("js/less.js")?>"></script>
-        <script src="<?= base_url("js/jssor.js")?>"></script>
-   		<script src="<?= base_url("js/jssor.slider.js")?>"></script>    
-        <script src="<?= base_url("js/my_jassor.js")?>"></script>
         <script src="<?= base_url("js/bootstrap.js")?>"></script>
 		
 	</head>
@@ -48,6 +45,14 @@
                         <span>/</span>
                         <span>(11) 2956-5051</span>
                     </div>
+                    
+                    <?= form_open("imoveis/imoveis_temp",array("name"=>"busca-rapida"))?>
+                
+                        <input type="text" class="form-control buscar-text" name="buscar" placeholder="Buscar"> 
+
+                        <input type="submit" class="search" value="">
+
+                    <?= form_close()?>
                     
                 </div>    
             </div>
